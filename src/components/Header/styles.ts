@@ -9,16 +9,12 @@ export const HeaderContainer = styled.header `
     justify-content: space-between;
     padding: 2rem;
 
-    img {
-        margin-left: 5rem;
-    }
-
     nav {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        margin-right: 8rem;
+        margin-right: 1rem;
 
         div {
             display: flex;
