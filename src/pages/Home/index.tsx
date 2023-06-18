@@ -7,29 +7,38 @@ export function Home() {
         <S.HomeContainer>
             <S.HomePresentation>
                 <S.PresentationContent>
-                    <div>
+                    <div className='first'>
                         <h1>Encontre o café perfeito para qualquer hora do dia</h1>
                         <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
                     </div>
 
-                    <div>
+                    <div className='last'>
                         <S.StyledTags>
-                            <ShoppingCart weight='fill' size={16} />
+                            <S.StyledCircle circleColor='yellowDark'>
+                                <ShoppingCart weight='fill' size={16} />
+                            </S.StyledCircle>
                             <span>Compra simples e segura</span>
                         </S.StyledTags>
 
                         <S.StyledTags>
-                            <Timer weight='fill' size={16} />
-                            <span>Entrega rápida e rastreada</span>
-                        </S.StyledTags>
-
-                        <S.StyledTags>
-                            <Package weight='fill' size={16} />
+                            <S.StyledCircle circleColor='gray'>
+                                <Package weight='fill' size={16} />
+                            </S.StyledCircle>
                             <span>Embalagem mantém o café intacto</span>
                         </S.StyledTags>
 
                         <S.StyledTags>
-                            <Coffee weight='fill' size={16} />
+                            <S.StyledCircle circleColor='brandYellow'>
+                                <Timer weight='fill' size={16} />
+                            </S.StyledCircle>
+                            <span>Entrega rápida e rastreada</span>
+                        </S.StyledTags>
+
+
+                        <S.StyledTags>
+                            <S.StyledCircle circleColor='purple'>
+                                <Coffee weight='fill' size={16} />
+                            </S.StyledCircle>
                             <span>O café chega fresquinho até você</span>
                         </S.StyledTags>
                     </div>
