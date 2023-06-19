@@ -1,6 +1,7 @@
 import * as S from './styles';
 import coffeImage from '../../assets/coffe-image.svg';
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react';
+import { CoffeeCard } from '../../components/CoffeeCard/index';
 
 export function Home() {
     return (
@@ -49,6 +50,8 @@ export function Home() {
 
             <S.CafeMenu>
                 <span>Nossos Cafés</span>
+
+                <CoffeeCard />
             </S.CafeMenu>
         </S.HomeContainer>
     )

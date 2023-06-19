@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.main`
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
 `
 
@@ -46,19 +44,17 @@ export const PresentationContent = styled.div`
     }
 `
 
-export const CafeMenu = styled.div`
-`
 
 export const StyledTags = styled.div`
     display: flex;
     align-items: center;
     gap: 0.75rem;
-
+    
     span {
         font-size: 1rem;
         line-height: 1.3;
     }
-`;
+    `;
 
 const CIRCLE_COLOR = {
     yellowDark: 'yellowDark',
@@ -77,8 +73,24 @@ export const StyledCircle = styled.div<CircleProps>`
     color: ${props => props.theme.background};
     padding: 0.5rem;
     border-radius: 50%;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    `;
+
+export const CafeMenu = styled.div`
+    margin: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    span {
+        font-family: 'Baloo 2';
+        font-size: 2rem;
+        line-height: 1.3;
+        color: ${props => props.theme.baseSubtitle}
+    }
+
 `
