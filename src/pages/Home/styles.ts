@@ -86,11 +86,17 @@ export const CafeMenu = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     
-    span {
+    h3 {
         font-family: 'Baloo 2';
         font-size: 2rem;
         line-height: 1.3;
         color: ${props => props.theme.baseSubtitle}
     }
 
+`;
+
+export const CoffeeContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3.375rem;
 `

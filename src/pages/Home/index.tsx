@@ -49,9 +49,10 @@ export function Home() {
             </S.HomePresentation>
 
             <S.CafeMenu>
-                <span>Nossos Cafés</span>
-
-                <CoffeeCard />
+                <h3>Nossos Cafés</h3>
+                <S.CoffeeContainer>
+                    <CoffeeCard />
+                </S.CoffeeContainer>
             </S.CafeMenu>
         </S.HomeContainer>
     )
