@@ -7,7 +7,7 @@ export const CoffeeBox = styled.div`
     justify-content: center;
     padding: 1rem;
     gap: 1rem;
-    width: 16rem;
+    max-width: 14rem;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 36px;
     border-top-right-radius: 36px;

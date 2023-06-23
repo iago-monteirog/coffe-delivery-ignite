@@ -52,6 +52,10 @@ export function Home() {
                 <h3>Nossos Cafés</h3>
                 <S.CoffeeContainer>
                     <CoffeeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
+                    <CoffeeCard />
                 </S.CoffeeContainer>
             </S.CafeMenu>
         </S.HomeContainer>

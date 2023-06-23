@@ -97,6 +97,7 @@ export const CafeMenu = styled.div`
 
 export const CoffeeContainer = styled.div`
     display: flex;
+    gap: 2rem;
     flex-wrap: wrap;
     margin-top: 3.375rem;
 `
