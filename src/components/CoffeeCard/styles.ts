@@ -71,22 +71,6 @@ export const ActionsBox = styled.div`
     }
 `;
 
-export const Counter = styled.div`
-    background: ${props => props.theme.baseButton};
-    border-radius: 6px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    gap: 0.5rem;
-
-    svg {
-        color: ${props => props.theme.purple};
-        cursor: pointer;
-    }
-`;
-
 export const CoffeeTag = styled.div`
     background: ${props => props.theme.yellowLight};
     padding: 0.25rem 0.5rem;

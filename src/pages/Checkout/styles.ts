@@ -155,5 +155,73 @@ export const StyledInput = styled.input`
 `
 
 export const SelectedCoffeesContainer = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 `;
+
+export const OrderBox = styled(BaseBox)`
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 36px;
+    border-top-right-radius: 36px;
+    border-bottom-right-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+`;
+
+export const StyledCoffeeCard = styled.div`
+    display: flex;
+    padding: 8px 4px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+`;
+
+export const Info = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    img {
+        width: 4rem;
+        height: 4rem;
+    }
+`;
+
+export const Details = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px
+`;
+
+export const Action = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+`;
+
+export const RemoveButton = styled.button`
+    display: flex;
+    height: 46px;
+    padding: 0px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    background: ${props => props.theme.baseButton};
+    border-radius: 6px;
+    border: none;
+
+    svg {
+        color: ${props => props.theme.purple}
+    }
+
+    span {
+        font-size: 0.75rem;
+        line-height: 1.6;
+        text-transform: uppercase;
+    }
+`

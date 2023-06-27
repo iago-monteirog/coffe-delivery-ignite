@@ -1,7 +1,8 @@
 import * as S from './styles';
 import expresso from '../../assets/expresso.png';
-import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react';
+import { ShoppingCart } from '@phosphor-icons/react';
 import { NavLink } from 'react-router-dom';
+import { Counter } from '../Counter';
 
 export function CoffeeCard() {
     return (
@@ -17,12 +18,7 @@ export function CoffeeCard() {
                 <p>R$<strong>9,90</strong></p>
 
                 <S.ActionsBox>
-                    <S.Counter>
-                        <Minus size={16} weight='bold' />
-                        <span>1</span>
-                        <Plus size={16} weight='bold' />
-                    </S.Counter>
-
+                    <Counter />
                     <NavLink to='/checkout'>
                         <ShoppingCart weight='fill' size={22} />
                     </NavLink>

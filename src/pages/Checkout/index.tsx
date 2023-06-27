@@ -1,5 +1,8 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from '@phosphor-icons/react';
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from '@phosphor-icons/react';
 import * as S from './styles';
+import expresso from '../../assets/expresso.png';
+import latte from '../../assets/latte.png';
+import { Counter } from '../../components/Counter';
 
 export function CheckouttPage() {
     return (
@@ -59,8 +62,29 @@ export function CheckouttPage() {
                 </S.PaymentBox>
 
             </S.OrderContainer>
+
             <S.SelectedCoffeesContainer>
                 <h3>Cafés selecionados</h3>
+
+                <S.OrderBox>
+                    <S.StyledCoffeeCard>
+                        <S.Info>
+                            <img src={latte} />
+
+                            <S.Details>
+                                <p>Expresso Tradicional</p>
+                                <S.Action>
+                                    <Counter />
+
+                                    <S.RemoveButton>
+                                        <Trash size={16} />
+                                        <span>Remover</span>
+                                    </S.RemoveButton>
+                                </S.Action>
+                            </S.Details>
+                        </S.Info>
+                    </S.StyledCoffeeCard>
+                </S.OrderBox>
             </S.SelectedCoffeesContainer>
         </S.CheckoutContainer>
     )
