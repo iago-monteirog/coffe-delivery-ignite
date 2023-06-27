@@ -22,22 +22,12 @@ export const OrderContainer = styled.div`
     gap: 12px;
 `;
 
-export const FormBox = styled.div`
+export const BaseBox = styled.div`
     padding: 40px;
     border-radius: 6px;
     background: ${props => props.theme.baseCard};
 
-    .tittle {
-        display: flex;
-        gap: 8px;
-        align-items: center; 
-    }
-    
-   svg {
-    color: ${props => props.theme.yellowDark};
-   }
-
-   span {
+    span {
     color: ${props => props.theme.baseSubtitle};
     font-size: 1rem;
     line-height: 1.3;
@@ -47,6 +37,71 @@ export const FormBox = styled.div`
     font-size: 0.875em;
     line-height: 1.3;
     margin-top: 2px;
+   }
+
+   .tittle {
+        display: flex;
+        gap: 8px;
+        align-items: center; 
+    }
+`;
+
+export const PaymentBox = styled(BaseBox)`
+    .tittle {
+        svg {
+            color: ${props => props.theme.purple};
+        }
+    }
+`;
+
+export const RadiosContainer = styled.div`
+    margin-top: 2rem;
+
+    display: flex;
+    gap: 12px;
+
+    label {
+        display: flex;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+`
+
+export const RadioPaymentBox = styled.div`
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 0 0;
+    cursor: pointer;
+    border-radius: 6px;
+    background: ${props => props.theme.baseButton};
+
+    input[type="radio"]:checked + & {
+        border: 1px solid ${props => props.theme.purple};
+        background: ${props => props.theme.purpleLight};
+    }
+
+    input[type="radio"]:hover + & {
+        background: ${props => props.theme.baseHover};
+    }
+
+    span {
+        font-size: 0.75rem;
+        color: ${props => props.theme.baseText};
+        line-height: 1.6;
+        text-transform: uppercase;
+    }
+    svg {
+        color: ${props => props.theme.purple};
+    }
+`
+
+export const FormBox = styled(BaseBox)`
+   svg {
+    color: ${props => props.theme.yellowDark};
    }
 
    .fields{
