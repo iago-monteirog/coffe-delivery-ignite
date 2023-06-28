@@ -3,10 +3,20 @@ import * as S from './styles';
 import expresso from '../../assets/expresso.png';
 import latte from '../../assets/latte.png';
 import { Counter } from '../../components/Counter';
+import { FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function CheckouttPage() {
+    const navigate = useNavigate();
+
+    function handleSubmitOrder(event: FormEvent) {
+        event.preventDefault()
+
+        navigate('/success')
+    }
+
     return (
-        <S.CheckoutContainer>
+        <S.CheckoutContainer onSubmit={handleSubmitOrder}>
             <S.OrderContainer>
                 <h3>Complete seu pedido</h3>
 
@@ -67,9 +77,10 @@ export function CheckouttPage() {
                 <h3>Cafés selecionados</h3>
 
                 <S.OrderBox>
+
                     <S.StyledCoffeeCard>
                         <S.Info>
-                            <img src={latte} />
+                            <img src={expresso} />
 
                             <S.Details>
                                 <p>Expresso Tradicional</p>
@@ -83,7 +94,48 @@ export function CheckouttPage() {
                                 </S.Action>
                             </S.Details>
                         </S.Info>
+
+
                     </S.StyledCoffeeCard>
+                    <S.Divider />
+
+                    <S.StyledCoffeeCard>
+                        <S.Info>
+                            <img src={latte} />
+
+                            <S.Details>
+                                <p>Latte</p>
+                                <S.Action>
+                                    <Counter />
+
+                                    <S.RemoveButton>
+                                        <Trash size={16} />
+                                        <span>Remover</span>
+                                    </S.RemoveButton>
+                                </S.Action>
+                            </S.Details>
+                        </S.Info>
+                    </S.StyledCoffeeCard>
+                    <S.Divider />
+
+                    <S.ItensResume>
+                        <S.TotalItensPrice>
+                            <p>Total de itens</p>
+                            <span>R$ 29,70</span>
+                        </S.TotalItensPrice>
+                        <S.Freight>
+                            <p>Entrega</p>
+                            <span>R$ 3,50</span>
+                        </S.Freight>
+                        <S.Total>
+                            <p>Total</p>
+                            <span>R$ 33,20</span>
+                        </S.Total>
+                    </S.ItensResume>
+
+                    <S.ConfirmOrderButton type='submit' >
+                        <span>Confirmar pedido</span>
+                    </S.ConfirmOrderButton>
                 </S.OrderBox>
             </S.SelectedCoffeesContainer>
         </S.CheckoutContainer>

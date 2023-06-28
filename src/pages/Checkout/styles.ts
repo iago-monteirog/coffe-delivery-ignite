@@ -224,4 +224,79 @@ export const RemoveButton = styled.button`
         line-height: 1.6;
         text-transform: uppercase;
     }
-`
+`;
+
+export const Divider = styled.div`
+    height: 0px;
+    border: 1px solid ${props => props.theme.baseButton};
+`;
+
+export const ItensResume = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+`;
+
+export const Prices = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    text-align: right;
+    line-height: 1.3;
+`;
+
+export const TotalItensPrice = styled(Prices)`
+    color: ${props => props.theme.baseText};
+    
+    span {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.875rem;
+    }
+`;
+
+export const Freight = styled(Prices)`
+    span {
+            font-size: 1rem;
+        }
+
+    p {
+        font-size: 0.875rem;
+    }
+`;
+
+export const Total = styled(Prices)`
+    color: ${props => props.theme.baseSubtitle};
+    font-size: 1.25rem;
+    font-weight: 700;
+`;
+
+export const ConfirmOrderButton = styled.button`
+    display: flex;
+    padding: 12px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    align-self: stretch;
+    cursor: pointer;
+
+    border-radius: 6px;
+    background: ${props => props.theme.yellow};
+    border: none;
+    transition: 0.2s;
+
+    span{
+        color: ${props => props.theme.white};
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 1.6;
+        text-transform: uppercase;
+    }
+
+    &:hover {
+        background: ${props => props.theme.yellowDark};
+    }
+`;
