@@ -2,6 +2,7 @@ import * as S from './styles';
 import coffeImage from '../../assets/coffe-image.svg';
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react';
 import { CoffeeCard } from '../../components/CoffeeCard/index';
+import { StyledCircle } from '../../styles/themes/styledCircles';
 
 export function Home() {
     return (
@@ -15,31 +16,31 @@ export function Home() {
 
                     <div className='last'>
                         <S.StyledTags>
-                            <S.StyledCircle circleColor='yellowDark'>
+                            <StyledCircle circleColor='yellowDark'>
                                 <ShoppingCart weight='fill' size={16} />
-                            </S.StyledCircle>
+                            </StyledCircle>
                             <span>Compra simples e segura</span>
                         </S.StyledTags>
 
                         <S.StyledTags>
-                            <S.StyledCircle circleColor='gray'>
+                            <StyledCircle circleColor='gray'>
                                 <Package weight='fill' size={16} />
-                            </S.StyledCircle>
+                            </StyledCircle>
                             <span>Embalagem mantém o café intacto</span>
                         </S.StyledTags>
 
                         <S.StyledTags>
-                            <S.StyledCircle circleColor='brandYellow'>
+                            <StyledCircle circleColor='brandYellow'>
                                 <Timer weight='fill' size={16} />
-                            </S.StyledCircle>
+                            </StyledCircle>
                             <span>Entrega rápida e rastreada</span>
                         </S.StyledTags>
 
 
                         <S.StyledTags>
-                            <S.StyledCircle circleColor='purple'>
+                            <StyledCircle circleColor='purple'>
                                 <Coffee weight='fill' size={16} />
-                            </S.StyledCircle>
+                            </StyledCircle>
                             <span>O café chega fresquinho até você</span>
                         </S.StyledTags>
                     </div>

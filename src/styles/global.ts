@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-size: 1rem;
         -webkit-font-smoothing: antialiased;
+        line-height: 1.3;
     }
 
     :focus {
