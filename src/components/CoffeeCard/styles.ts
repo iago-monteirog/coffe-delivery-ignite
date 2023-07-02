@@ -71,6 +71,14 @@ export const ActionsBox = styled.div`
     }
 `;
 
+export const Tags = styled.div`
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+`
+
 export const CoffeeTag = styled.div`
     background: ${props => props.theme.yellowLight};
     padding: 0.25rem 0.5rem;
@@ -82,7 +90,9 @@ export const CoffeeTag = styled.div`
     
     span {
         font-size: 0.625rem;
+        font-weight: 700;
         line-height: 1.3;
         color: ${props => props.theme.yellowDark};
+        text-transform: uppercase;
 }
 `

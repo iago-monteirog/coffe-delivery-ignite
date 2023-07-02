@@ -3,8 +3,25 @@ import coffeImage from '../../assets/coffe-image.svg';
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react';
 import { CoffeeCard } from '../../components/CoffeeCard/index';
 import { StyledCircle } from '../../styles/themes/styledCircles';
+import { useEffect, useState } from 'react';
+import coffeeMenu from './caffeeMenu';
+
+export interface CofffeeProps {
+    id?: number,
+    nomeCafe: string;
+    img: string;
+    descricao: string;
+    preco: string;
+    tags: string[];
+}
 
 export function Home() {
+    const [coffeList, setCoffeList] = useState<CofffeeProps[]>([]);
+
+    useEffect(() => {
+        setCoffeList(coffeeMenu);
+    }, []);
+
     return (
         <S.HomeContainer>
             <S.HomePresentation>
@@ -52,11 +69,18 @@ export function Home() {
             <S.CafeMenu>
                 <h3>Nossos Cafés</h3>
                 <S.CoffeeContainer>
-                    <CoffeeCard />
-                    <CoffeeCard />
-                    <CoffeeCard />
-                    <CoffeeCard />
-                    <CoffeeCard />
+                    {coffeList.map((coffee) => {
+                        return (
+                            <CoffeeCard
+                                key={coffee.id}
+                                nomeCafe={coffee.nomeCafe}
+                                img={coffee.img}
+                                descricao={coffee.descricao}
+                                preco={coffee.preco}
+                                tags={coffee.tags}
+                            />
+                        )
+                    })}
                 </S.CoffeeContainer>
             </S.CafeMenu>
         </S.HomeContainer>
