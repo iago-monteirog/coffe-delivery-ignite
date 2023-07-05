@@ -7,7 +7,7 @@ export const CoffeeBox = styled.div`
     justify-content: center;
     padding: 1rem;
     gap: 1rem;
-    max-width: 14rem;
+    width: 14rem;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 36px;
     border-top-right-radius: 36px;
@@ -73,10 +73,9 @@ export const ActionsBox = styled.div`
 
 export const Tags = styled.div`
     display: inline-flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
 `
 
 export const CoffeeTag = styled.div`
