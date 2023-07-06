@@ -1,22 +1,22 @@
 import { Minus, Plus } from '@phosphor-icons/react';
 import * as S from './styles';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
 
-interface CoffeeListProps {
-    id: number,
-    name: string,
-    price: number
-}
 
-export function Counter({ name, price }: any) {
-    const [coffeeList, setCoffeeList] = useState<CoffeeListProps[]>([]);
+export function Counter() {
+    const { coffeeList, setCoffeeList } = useContext(CoffeeShopContext);
 
     function handleAddCoffeeToCart() {
-        const newCoffee: CoffeeListProps[] = [
+        const newCoffee = [
             {
-                id: coffeeList.length,
-                name: name,
-                price: price,
+                id: coffeeList[0].id,
+                name: coffeeList[0].name,
+                img: coffeeList[0].img,
+                description: coffeeList[0].description,
+                price: coffeeList[0].price,
+                tags: coffeeList[0].tags
+
             }
         ];
 
