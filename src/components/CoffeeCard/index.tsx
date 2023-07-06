@@ -26,7 +26,7 @@ export function CoffeeCard({ nomeCafe, img, descricao, preco, tags }: CofffeePro
                 <p>R$<strong>{preco}</strong></p>
 
                 <S.ActionsBox>
-                    <Counter />
+                    <Counter name={nomeCafe} price={preco} />
                     <NavLink to='/checkout'>
                         <ShoppingCart weight='fill' size={22} />
                     </NavLink>

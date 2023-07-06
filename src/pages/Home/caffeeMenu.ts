@@ -17,40 +17,40 @@ import irlandes from '../../assets/irlandes.png';
 const coffeeMenu = [
     {   
         id: 1,
-        nomeCafe: 'Expresso Tradicional',
+        name: 'Expresso Tradicional',
         img: expresso,
-        descricao: 'O tradicional café feito com água quente e grãos moídos',
-        preco: '9,90',
+        description: 'O tradicional café feito com água quente e grãos moídos',
+        price: 9.90,
         tags: [
             'Tradicional'
         ],
     },
     {
         id: 2,
-        nomeCafe: 'Expresso Americano',
+        name: 'Expresso Americano',
         img: americano,
-        descricao: 'Expresso diluído, menos intenso que o tradicional',
-        preco: '9,90',
+        description: 'Expresso diluído, menos intenso que o tradicional',
+        price: 9.90,
         tags: [
             'Tradicional'
         ],
     },
     {
         id: 3,
-        nomeCafe: 'Expresso Cremoso',
+        name: 'Expresso Cremoso',
         img: cremoso,
-        descricao: 'Café expresso tradicional com espuma cremosa',
-        preco: '10,20',
+        description: 'Café expresso tradicional com espuma cremosa',
+        price: 10.2,
         tags: [
             'Tradicional'
         ],
     },
     {
         id: 4,
-        nomeCafe: 'Expresso Gelado',
+        name: 'Expresso Gelado',
         img: gelado,
-        descricao: 'Bebida preparada com café expresso e cubos de gelo',
-        preco: '10,20',
+        description: 'Bebida preparada com café expresso e cubos de gelo',
+        price: 10.2,
         tags: [
             'Tradicional',
             'Gelado'
@@ -58,10 +58,10 @@ const coffeeMenu = [
     },
     {
         id: 5,
-        nomeCafe: 'Café com Leite',
+        name: 'Café com Leite',
         img: cafeLeite,
-        descricao: 'Meio a meio de expresso tradicional com leite vaporizado',
-        preco: '10,90',
+        description: 'Meio a meio de expresso tradicional com leite vaporizado',
+        price: 10.9,
         tags: [
             'Tradicional',
             'Com leite'
@@ -69,10 +69,10 @@ const coffeeMenu = [
     },
     {
         id: 6,
-        nomeCafe: 'Latte',
+        name: 'Latte',
         img: latte,
-        descricao: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
-        preco: '11,50',
+        description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
+        price: 11.5,
         tags: [
             'Tradicional',
             'Com leite'
@@ -80,10 +80,10 @@ const coffeeMenu = [
     },
     {
         id: 7,
-        nomeCafe: 'Capuccino',
+        name: 'Capuccino',
         img: capuccino,
-        descricao: 'Bebida com canela feita de doses iguais de café, leite e espuma',
-        preco: '11,50',
+        description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
+        price: 11.5,
         tags: [
             'Tradicional',
             'Com leite'
@@ -91,10 +91,10 @@ const coffeeMenu = [
     },
     {
         id: 8,
-        nomeCafe: 'Macchiato',
+        name: 'Macchiato',
         img: macchiato,
-        descricao: 'Café expresso misturado com um pouco de leite quente e espuma',
-        preco: '11,50',
+        description: 'Café expresso misturado com um pouco de leite quente e espuma',
+        price: 11.5,
         tags: [
             'Tradicional',
             'Com leite'
@@ -102,10 +102,10 @@ const coffeeMenu = [
     },
     {
         id: 9,
-        nomeCafe: 'Mocaccino',
+        name: 'Mocaccino',
         img: mocaccino,
-        descricao: 'Café expresso com calda de chocolate, pouco leite e espuma',
-        preco: '12,90',
+        description: 'Café expresso com calda de chocolate, pouco leite e espuma',
+        price: 12.9,
         tags: [
             'Tradicional',
             'Com leite'
@@ -113,10 +113,10 @@ const coffeeMenu = [
     },
     {
         id: 10,
-        nomeCafe: 'Chocolate Quente',
+        name: 'Chocolate Quente',
         img: chocolate,
-        descricao: 'Bebida feita com chocolate dissolvido no leite quente e café',
-        preco: '15,50',
+        description: 'Bebida feita com chocolate dissolvido no leite quente e café',
+        price: 15.5,
         tags: [
             'Especial',
             'Com leite'
@@ -124,10 +124,10 @@ const coffeeMenu = [
     },
     {
         id: 11,
-        nomeCafe: 'Cubano',
+        name: 'Cubano',
         img: cubano,
-        descricao: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
-        preco: '16,20',
+        description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
+        price: 16.2,
         tags: [
             'Especial',
             'Alcoólico',
@@ -136,30 +136,30 @@ const coffeeMenu = [
     },
     {
         id: 12,
-        nomeCafe: 'Havaiano',
+        name: 'Havaiano',
         img: havaiano,
-        descricao: 'Bebida adocicada preparada com café e leite de coco',
-        preco: '16,20',
+        description: 'Bebida adocicada preparada com café e leite de coco',
+        price: 16.2,
         tags: [
             'Especial'
         ],
     },
     {
         id: 13,
-        nomeCafe: 'Árabe',
+        name: 'Árabe',
         img: arabe,
-        descricao: 'Bebida preparada com grãos de café árabe e especiarias',
-        preco: '19,90',
+        description: 'Bebida preparada com grãos de café árabe e especiarias',
+        price: 19.9,
         tags: [
             'Especial'
         ],
     },
     {
         id: 14,
-        nomeCafe: 'Irlandês',
+        name: 'Irlandês',
         img: irlandes,
-        descricao: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
-        preco: '19,90',
+        description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
+        price: 19.9,
         tags: [
             'Especial',
             'Alcoólico'
