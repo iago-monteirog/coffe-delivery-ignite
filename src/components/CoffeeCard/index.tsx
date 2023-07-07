@@ -2,19 +2,18 @@ import * as S from './styles';
 import { ShoppingCart } from '@phosphor-icons/react';
 import { NavLink } from 'react-router-dom';
 import { Counter } from '../Counter';
-import { useContext } from 'react';
-import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
+import { CoffeeType } from '../../types/Coffee';
 
-export function CoffeeCard() {
 
-    const { coffeeList } = useContext(CoffeeShopContext);
+
+export function CoffeeCard({ coffee }: CoffeeType) {
 
     return (
         <S.CoffeeBox>
-            <img src={coffeeList[0].img} alt="" />
+            <img src={coffee.img} alt="" />
 
             <S.Tags>
-                {coffeeList[0].tags.map((tag, index) => {
+                {coffee.tags.map((tag, index) => {
                     return (
                         <S.CoffeeTag key={index}>
                             <span>{tag}</span>
@@ -23,15 +22,14 @@ export function CoffeeCard() {
                 })}
             </S.Tags>
 
-            <h4>{coffeeList[0].name}</h4>
-            <p>{coffeeList[0].description}</p>
+            <h4>{coffee.name}</h4>
+            <p>{coffee.description}</p>
 
             <S.BuyBox>
-                <p>R$<strong>{coffeeList[0].price}</strong></p>
+                <p>R$<strong>{coffee.price}</strong></p>
 
                 <S.ActionsBox>
-                    <Counter
-                    />
+                    <Counter coffee={coffee} />
                     <NavLink to='/checkout'>
                         <ShoppingCart weight='fill' size={22} />
                     </NavLink>

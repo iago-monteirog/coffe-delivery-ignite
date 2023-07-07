@@ -1,43 +1,50 @@
 import { Minus, Plus } from '@phosphor-icons/react';
 import * as S from './styles';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
+import { CoffeeType } from '../../types/Coffee';
 
 
-export function Counter() {
-    const { coffeeList, setCoffeeList } = useContext(CoffeeShopContext);
+export function Counter({ coffee }: CoffeeType) {
+    const { cartItems, setCartItems } = useContext(CoffeeShopContext);
+
+    const [quantitySelectedItem, setQuantitySelectedItem] = useState<number>(0);
 
     function handleAddCoffeeToCart() {
+
         const newCoffee = [
             {
-                id: coffeeList[0].id,
-                name: coffeeList[0].name,
-                img: coffeeList[0].img,
-                description: coffeeList[0].description,
-                price: coffeeList[0].price,
-                tags: coffeeList[0].tags
-
+                id: coffee.id,
+                name: coffee.name,
+                price: coffee.price,
             }
         ];
 
-        setCoffeeList([...coffeeList, ...newCoffee]);
+
+        setCartItems([...cartItems, ...newCoffee]);
+
+        setQuantitySelectedItem((state: number) => {
+            return state + 1
+        });
     }
 
     function handleRemoveCoffeeToCart() {
-        if (coffeeList.length === 0) return;
+        if (cartItems.length === 0) return;
 
-        const updatedCoffeeList = [...coffeeList];
+        const updatedCoffeeList = [...cartItems];
         updatedCoffeeList.pop();
 
-        setCoffeeList([...updatedCoffeeList]);
-    }
+        setCartItems([...updatedCoffeeList]);
 
-    console.log(coffeeList);
+        setQuantitySelectedItem((state: number) => {
+            return state - 1;
+        });
+    }
 
     return (
         <S.Counter>
             <Minus size={22} weight='bold' onClick={handleRemoveCoffeeToCart} />
-            <span>{coffeeList.length}</span>
+            <span>{quantitySelectedItem}</span>
             <Plus size={22} weight='bold' onClick={handleAddCoffeeToCart} />
         </S.Counter>
     );

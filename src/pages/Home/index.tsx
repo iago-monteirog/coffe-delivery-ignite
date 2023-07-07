@@ -3,15 +3,15 @@ import coffeImage from '../../assets/coffe-image.svg';
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react';
 import { CoffeeCard } from '../../components/CoffeeCard/index';
 import { StyledCircle } from '../../styles/themes/styledCircles';
-import { useContext, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import coffeeMenu from './caffeeMenu';
-import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
+import { CoffeeProps } from '../../types/Coffee';
 
 
 
 export function Home() {
 
-    const { coffeeList, setCoffeeList } = useContext(CoffeeShopContext);
+    const [coffeeList, setCoffeeList] = useState<CoffeeProps[]>([])
 
     useEffect(() => {
         setCoffeeList(coffeeMenu);
@@ -68,6 +68,7 @@ export function Home() {
                         return (
                             <CoffeeCard
                                 key={coffee.id}
+                                coffee={coffee}
                             />
                         )
                     })}
