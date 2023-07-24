@@ -8,6 +8,8 @@ import { CoffeeType } from '../../types/Coffee';
 
 export function CoffeeCard({ coffee }: CoffeeType) {
 
+    const formattedPrice = coffee.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+
     return (
         <S.CoffeeBox>
             <img src={coffee.img} alt="" />
@@ -26,7 +28,7 @@ export function CoffeeCard({ coffee }: CoffeeType) {
             <p>{coffee.description}</p>
 
             <S.BuyBox>
-                <p>R$<strong>{coffee.price}</strong></p>
+                <p>R$<strong>{formattedPrice}</strong></p>
 
                 <S.ActionsBox>
                     <Counter coffee={coffee} />

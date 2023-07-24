@@ -12,6 +12,7 @@ export const CoffeeBox = styled.div`
     border-bottom-left-radius: 36px;
     border-top-right-radius: 36px;
     border-bottom-right-radius: 6px;
+    margin-top: 10px;
 
     background: ${props => props.theme.baseCard};
 
