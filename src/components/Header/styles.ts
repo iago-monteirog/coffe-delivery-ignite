@@ -16,17 +16,6 @@ export const HeaderContainer = styled.header `
         gap: 1rem;
         margin-right: 1rem;
 
-        div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: ${props => props.theme.purpleLight};
-            padding: 0.5rem;
-            border-radius: 6px;
-            color: ${props => props.theme.purpleDark};
-            font-size: 0.875rem;
-        }
-
         a{
             background: ${props => props.theme.yellowLight};
             color: ${props => props.theme.yellowDark};
@@ -40,3 +29,38 @@ export const HeaderContainer = styled.header `
         }
     }
 `;
+
+export const MapBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: ${props => props.theme.purpleLight};
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: ${props => props.theme.purpleDark};
+    font-size: 0.875rem;
+`;
+
+export const ItemCounter = styled.div`
+    display: flex;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    right: 55px;
+    top: 35px;
+
+    border-radius: 50%;
+    background: ${props => props.theme.yellowDark};
+
+    span {
+        color: ${props => props.theme.white};
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: -0.72px;
+    }
+`

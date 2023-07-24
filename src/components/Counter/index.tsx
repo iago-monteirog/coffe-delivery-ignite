@@ -8,7 +8,6 @@ import { CoffeeType } from '../../types/Coffee';
 export function Counter({ coffee }: CoffeeType) {
     const { cartItems, setCartItems } = useContext(CoffeeShopContext);
 
-    const [quantitySelectedItem, setQuantitySelectedItem] = useState<number>(0);
 
     function handleAddCoffeeToCart() {
 
@@ -22,10 +21,6 @@ export function Counter({ coffee }: CoffeeType) {
 
 
         setCartItems([...cartItems, ...newCoffee]);
-
-        setQuantitySelectedItem((state: number) => {
-            return state + 1
-        });
     }
 
     function handleRemoveCoffeeToCart() {
@@ -36,15 +31,12 @@ export function Counter({ coffee }: CoffeeType) {
 
         setCartItems([...updatedCoffeeList]);
 
-        setQuantitySelectedItem((state: number) => {
-            return state - 1;
-        });
     }
 
     return (
         <S.Counter>
             <Minus size={22} weight='bold' onClick={handleRemoveCoffeeToCart} />
-            <span>{quantitySelectedItem}</span>
+            <span>{cartItems.length}</span>
             <Plus size={22} weight='bold' onClick={handleAddCoffeeToCart} />
         </S.Counter>
     );
