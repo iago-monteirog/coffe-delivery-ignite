@@ -1,18 +1,19 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from '@phosphor-icons/react';
 import * as S from './styles';
-import expresso from '../../assets/expresso.png';
-import latte from '../../assets/latte.png';
 import { Counter } from '../../components/Counter';
-import { FormEvent } from 'react';
+import { FormEvent, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
 
 export function CheckouttPage() {
     const navigate = useNavigate();
 
+    const { cartItems } = useContext(CoffeeShopContext);
+
     function handleSubmitOrder(event: FormEvent) {
         event.preventDefault()
 
-        navigate('/success')
+        navigate('/success');
     }
 
     return (
@@ -77,46 +78,31 @@ export function CheckouttPage() {
                 <h3>Cafés selecionados</h3>
 
                 <S.OrderBox>
+                    {cartItems.map(coffee => {
+                        return (
+                            <>
+                                <S.StyledCoffeeCard>
+                                    <S.Info>
+                                        <img src={coffee.img} />
 
-                    <S.StyledCoffeeCard>
-                        <S.Info>
-                            <img src={expresso} />
+                                        <S.Details>
+                                            <p>{coffee.name}</p>
+                                            <S.Action>
+                                                <Counter key={coffee.id} coffee={coffee} />
 
-                            <S.Details>
-                                <p>Expresso Tradicional</p>
-                                <S.Action>
-                                    <Counter />
+                                                <S.RemoveButton>
+                                                    <Trash size={16} />
+                                                    <span>Remover</span>
+                                                </S.RemoveButton>
+                                            </S.Action>
+                                        </S.Details>
+                                    </S.Info>
 
-                                    <S.RemoveButton>
-                                        <Trash size={16} />
-                                        <span>Remover</span>
-                                    </S.RemoveButton>
-                                </S.Action>
-                            </S.Details>
-                        </S.Info>
-
-
-                    </S.StyledCoffeeCard>
-                    <S.Divider />
-
-                    <S.StyledCoffeeCard>
-                        <S.Info>
-                            <img src={latte} />
-
-                            <S.Details>
-                                <p>Latte</p>
-                                <S.Action>
-                                    <Counter />
-
-                                    <S.RemoveButton>
-                                        <Trash size={16} />
-                                        <span>Remover</span>
-                                    </S.RemoveButton>
-                                </S.Action>
-                            </S.Details>
-                        </S.Info>
-                    </S.StyledCoffeeCard>
-                    <S.Divider />
+                                </S.StyledCoffeeCard>
+                                <S.Divider />
+                            </>
+                        )
+                    })}
 
                     <S.ItensResume>
                         <S.TotalItensPrice>

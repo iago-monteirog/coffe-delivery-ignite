@@ -16,7 +16,10 @@ export function Counter({ coffee }: CoffeeType) {
             {
                 id: coffee.id,
                 name: coffee.name,
+                img: coffee.img,
+                description: coffee.description,
                 price: coffee.price,
+                tags: coffee.tags
             }
         ];
 
