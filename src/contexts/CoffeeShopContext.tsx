@@ -1,20 +1,25 @@
 import { ReactNode, createContext, useState } from "react";
 import { CoffeeProps } from "../types/Coffee";
 
-interface CartItensProps {
-    id?: number,
+export interface CartItensProps {
+    id: number,
     name: string;
     img: string;
     description: string;
     price: number;
     tags: string[];
 }
-
+interface UniqueCartItemsProps {
+    item: CartItensProps;
+    quantity: number;
+}
 interface CoffeeShopContextType {
     cartItems: CartItensProps[],
     setCartItems: (coffeList: CartItensProps[]) => void,
     coffeeList: CoffeeProps[],
     setCoffeeList: (coffeList: CoffeeProps[]) => void,
+    uniqueCartItems: UniqueCartItemsProps[],
+    setUniqueCartItems: (item: UniqueCartItemsProps[]) => void,
 }
 
 
@@ -26,7 +31,8 @@ interface CoffeeShopContextProviderProps {
 
 export function CoffeeShopContextProvider({ children }: CoffeeShopContextProviderProps) {
     const [cartItems, setCartItems] = useState<CartItensProps[]>([]);
-    const [coffeeList, setCoffeeList] = useState<CoffeeProps[]>([]) 
+    const [coffeeList, setCoffeeList] = useState<CoffeeProps[]>([]);
+    const [uniqueCartItems, setUniqueCartItems] = useState<UniqueCartItemsProps[]>([]);
 
     return (
         <CoffeeShopContext.Provider
@@ -34,7 +40,9 @@ export function CoffeeShopContextProvider({ children }: CoffeeShopContextProvide
                 cartItems,
                 setCartItems,
                 coffeeList,
-                setCoffeeList
+                setCoffeeList,
+                uniqueCartItems,
+                setUniqueCartItems
             }}
         >
             {children}

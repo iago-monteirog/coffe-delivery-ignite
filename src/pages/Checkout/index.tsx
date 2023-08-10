@@ -1,14 +1,30 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from '@phosphor-icons/react';
 import * as S from './styles';
 import { Counter } from '../../components/Counter';
-import { FormEvent, useContext } from 'react';
+import { FormEvent, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
+import { CartItensProps, CoffeeShopContext } from '../../contexts/CoffeeShopContext';
 
 export function CheckouttPage() {
+    const { cartItems, uniqueCartItems, setUniqueCartItems } = useContext(CoffeeShopContext);
+    
     const navigate = useNavigate();
 
-    const { cartItems } = useContext(CoffeeShopContext);
+    useEffect(() => {
+        const processedCartItems: Record<number, { item: CartItensProps; quantity: number }> = {};
+
+
+        cartItems.forEach(item => {
+            if (!processedCartItems[item.id]) {
+                processedCartItems[item.id] = { item: item, quantity: 1 };
+            } else {
+                processedCartItems[item.id].quantity++;
+            }
+        });
+
+        setUniqueCartItems(Object.values(processedCartItems));
+
+    }, []);
 
     function handleSubmitOrder(event: FormEvent) {
         event.preventDefault()
@@ -78,17 +94,17 @@ export function CheckouttPage() {
                 <h3>Cafés selecionados</h3>
 
                 <S.OrderBox>
-                    {cartItems.map(coffee => {
+                    {uniqueCartItems.map(coffee => {
                         return (
                             <>
                                 <S.StyledCoffeeCard>
                                     <S.Info>
-                                        <img src={coffee.img} />
+                                        <img src={coffee.item.img} />
 
                                         <S.Details>
-                                            <p>{coffee.name}</p>
+                                            <p>{coffee.item.name}</p>
                                             <S.Action>
-                                                <Counter key={coffee.id} coffee={coffee} />
+                                                <Counter key={coffee.item.id} coffee={coffee.item} />
 
                                                 <S.RemoveButton>
                                                     <Trash size={16} />

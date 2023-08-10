@@ -1,34 +1,47 @@
 import { Minus, Plus } from '@phosphor-icons/react';
 import * as S from './styles';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
 import { CoffeeType } from '../../types/Coffee';
+import { useLocation } from 'react-router-dom';
 
 
 export function Counter({ coffee }: CoffeeType) {
-    const { cartItems, setCartItems } = useContext(CoffeeShopContext);
+    const { cartItems, setCartItems, uniqueCartItems } = useContext(CoffeeShopContext);
 
     const [quantitySelectedItem, setQuantitySelectedItem] = useState<number>(0);
 
-    function handleAddCoffeeToCart() {
+    const location = useLocation();
 
-        const newCoffee = [
-            {
-                id: coffee.id,
-                name: coffee.name,
-                img: coffee.img,
-                description: coffee.description,
-                price: coffee.price,
-                tags: coffee.tags
+    useEffect(() => {
+        if (location.pathname === '/checkout') {
+            if (coffee.id !== undefined) {
+                uniqueCartItems.forEach(item => {
+                    setQuantitySelectedItem(item.quantity);
+                })
             }
-        ];
+        }
+    }, [location, setQuantitySelectedItem])
 
+    function handleAddCoffeeToCart() {
+        if (coffee.id !== undefined) {
+            const newCoffee = [
+                {
+                    id: coffee.id,
+                    name: coffee.name,
+                    img: coffee.img,
+                    description: coffee.description,
+                    price: coffee.price,
+                    tags: coffee.tags,
+                },
+            ];
 
-        setCartItems([...cartItems, ...newCoffee]);
+            setCartItems([...cartItems, ...newCoffee]);
 
-        setQuantitySelectedItem((state: number) => {
-            return state + 1
-        });
+            setQuantitySelectedItem((state: number) => {
+                return state + 1;
+            });
+        }
     }
 
     function handleRemoveCoffeeToCart() {
