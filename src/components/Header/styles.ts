@@ -49,8 +49,8 @@ export const ItemCounter = styled.div`
     align-items: center;
 
     position: absolute;
-    right: 40px;
-    top: 25px;
+    right: 55px;
+    top: 35px;
 
     border-radius: 50%;
     background: ${props => props.theme.yellowDark};

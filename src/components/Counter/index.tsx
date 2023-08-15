@@ -13,12 +13,13 @@ export function Counter({ coffee }: CoffeeType) {
 
     const location = useLocation();
 
+
     useEffect(() => {
         if (location.pathname === '/checkout') {
             if (coffee.id !== undefined) {
-                uniqueCartItems.forEach(item => {
-                    setQuantitySelectedItem(item.quantity);
-                })
+                const filteredCoffee = uniqueCartItems.filter(item => item.item.id === coffee.id);
+
+                setQuantitySelectedItem(filteredCoffee[0].quantity)
             }
         }
     }, [location, setQuantitySelectedItem])
