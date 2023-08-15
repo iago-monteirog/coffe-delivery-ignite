@@ -1,13 +1,15 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from '@phosphor-icons/react';
 import * as S from './styles';
 import { Counter } from '../../components/Counter';
-import { FormEvent, useContext, useEffect } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartItensProps, CoffeeShopContext } from '../../contexts/CoffeeShopContext';
 
 export function CheckouttPage() {
     const { cartItems, uniqueCartItems, setUniqueCartItems } = useContext(CoffeeShopContext);
-    
+    const [totalItemsSumInReal, setTotalItemsSumInReal] = useState<string>('');
+    const [totalSumInReal, setTotalSumInReal] = useState<string>('');
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,10 +26,25 @@ export function CheckouttPage() {
 
         setUniqueCartItems(Object.values(processedCartItems));
 
-    }, []);
+    }, [cartItems, setUniqueCartItems]);
+
+    useEffect(() => {
+        const totalItemsSum = cartItems.reduce((acc, coffee) => acc + coffee.price, 0);
+
+        setTotalItemsSumInReal(totalItemsSum.toLocaleString('pt-BR', { minimumFractionDigits: 2 }));
+    }, [cartItems, setTotalItemsSumInReal]);
+
+    useEffect(() => {
+        const totalItemsSumAsNumber = parseFloat(totalItemsSumInReal);
+
+        const totalSumWithFreight = totalItemsSumAsNumber + 3.5;
+
+        setTotalSumInReal(totalSumWithFreight.toLocaleString('pt-BR', { minimumFractionDigits: 2 }));
+
+    }, [totalItemsSumInReal, setTotalSumInReal]);
 
     function handleSubmitOrder(event: FormEvent) {
-        event.preventDefault()
+        event.preventDefault();
 
         navigate('/success');
     }
@@ -123,7 +140,7 @@ export function CheckouttPage() {
                     <S.ItensResume>
                         <S.TotalItensPrice>
                             <p>Total de itens</p>
-                            <span>R$ 29,70</span>
+                            <span>R$ {totalItemsSumInReal}</span>
                         </S.TotalItensPrice>
                         <S.Freight>
                             <p>Entrega</p>
@@ -131,7 +148,7 @@ export function CheckouttPage() {
                         </S.Freight>
                         <S.Total>
                             <p>Total</p>
-                            <span>R$ 33,20</span>
+                            <span>R$ {totalSumInReal}</span>
                         </S.Total>
                     </S.ItensResume>
 

@@ -19,7 +19,7 @@ export function Counter({ coffee }: CoffeeType) {
             if (coffee.id !== undefined) {
                 const filteredCoffee = uniqueCartItems.filter(item => item.item.id === coffee.id);
 
-                setQuantitySelectedItem(filteredCoffee[0].quantity)
+                setQuantitySelectedItem(filteredCoffee[0].quantity);
             }
         }
     }, [location, setQuantitySelectedItem])
