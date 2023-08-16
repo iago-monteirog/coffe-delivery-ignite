@@ -1,9 +1,25 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from '@phosphor-icons/react';
+import { Trash } from '@phosphor-icons/react';
 import * as S from './styles';
 import { Counter } from '../../components/Counter';
-import { FormEvent, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartItensProps, CoffeeShopContext } from '../../contexts/CoffeeShopContext';
+import * as zod from 'zod';
+import { FormProvider, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CheckoutForm } from './components/CheckoutForm';
+
+const checkoutFormValidationSchema = zod.object({
+    cep: zod.string().min(8, 'Preencha este campo com um CEP correto.'),
+    street: zod.string().min(3).max(50),
+    number: zod.string().min(1, 'Informe o número do endereço.'),
+    complement: zod.string().optional(),
+    district: zod.string().min(3, 'Informe o bairro.'),
+    city: zod.string().min(3, 'Informe a cidade.'),
+    state: zod.string().min(2).max(3)
+});
+
+type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function CheckouttPage() {
     const { cartItems, uniqueCartItems, setUniqueCartItems } = useContext(CoffeeShopContext);
@@ -11,6 +27,21 @@ export function CheckouttPage() {
     const [totalSumInReal, setTotalSumInReal] = useState<string>('');
 
     const navigate = useNavigate();
+
+    const checkoutForm = useForm<CheckoutFormData>({
+        resolver: zodResolver(checkoutFormValidationSchema),
+        defaultValues: {
+            cep: '00000-000',
+            street: '',
+            number: '',
+            complement: '',
+            district: '',
+            city: '',
+            state: ''
+        }
+    });
+
+    const { handleSubmit, reset } = checkoutForm;
 
     useEffect(() => {
         const processedCartItems: Record<number, { item: CartItensProps; quantity: number }> = {};
@@ -43,67 +74,21 @@ export function CheckouttPage() {
 
     }, [totalItemsSumInReal, setTotalSumInReal]);
 
-    function handleSubmitOrder(event: FormEvent) {
-        event.preventDefault();
+    function handleSubmitOrder(data: CheckoutFormData) {
+        console.log(data);
+
+        reset();
 
         navigate('/success');
     }
 
     return (
-        <S.CheckoutContainer onSubmit={handleSubmitOrder}>
+        <S.CheckoutContainer onSubmit={handleSubmit(handleSubmitOrder)}>
             <S.OrderContainer>
                 <h3>Complete seu pedido</h3>
-
-                <S.FormBox>
-                    <div className="tittle">
-                        <MapPinLine size={22} />
-                        <span>Endereço de Entrega</span>
-                    </div>
-
-                    <p>Informe o endereço onde deseja receber seu pedido</p>
-
-                    <div className="fields">
-                        <S.StyledInput type='number' placeholder='CEP' name='cep' id='cep' />
-                        <S.StyledInput type='text' placeholder='Rua' name='street' id='street' />
-                        <S.StyledInput type='number' placeholder='Número' name='number' id='number' />
-                        <S.StyledInput type='text' placeholder='Complemento' name='complement' id='complement' required={false} />
-                        <S.StyledInput type='text' placeholder='Bairro' name='district' id='district' />
-                        <S.StyledInput type='text' placeholder='Cidade' name='city' id='city' />
-                        <S.StyledInput type='text' placeholder='UF' name='state' id='state' />
-                    </div>
-                </S.FormBox>
-
-                <S.PaymentBox>
-                    <div className="tittle">
-                        <CurrencyDollar size={22} />
-                        <span>Pagamento</span>
-                    </div>
-
-                    <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
-                    <S.RadiosContainer>
-                        <label htmlFor="credit">
-                            <input type="radio" name='paymentMethod' id='credit' />
-                            <S.RadioPaymentBox>
-                                <CreditCard size={16} />
-                                <span>Cartão de crédito</span>
-                            </S.RadioPaymentBox>
-                        </label>
-                        <label htmlFor="debit">
-                            <input type="radio" name='paymentMethod' id='debit' />
-                            <S.RadioPaymentBox>
-                                <Bank size={16} />
-                                <span>Cartão de débito</span>
-                            </S.RadioPaymentBox>
-                        </label>
-                        <label htmlFor="cash">
-                            <input type="radio" name='paymentMethod' id='cash' />
-                            <S.RadioPaymentBox style={{ padding: '1rem 4rem 1rem 1rem' }}>
-                                <Money size={16} />
-                                <span>Dinheiro</span>
-                            </S.RadioPaymentBox>
-                        </label>
-                    </S.RadiosContainer>
-                </S.PaymentBox>
+                <FormProvider {...checkoutForm}>
+                    <CheckoutForm />
+                </FormProvider>
 
             </S.OrderContainer>
 
