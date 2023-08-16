@@ -16,13 +16,14 @@ const checkoutFormValidationSchema = zod.object({
     complement: zod.string().optional(),
     district: zod.string().min(3, 'Informe o bairro.'),
     city: zod.string().min(3, 'Informe a cidade.'),
-    state: zod.string().min(2).max(3)
+    state: zod.string().min(2).max(3),
+    paymentMethod: zod.string()
 });
 
 type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function CheckouttPage() {
-    const { cartItems, uniqueCartItems, setUniqueCartItems } = useContext(CoffeeShopContext);
+    const { cartItems, uniqueCartItems, setUniqueCartItems, setOrder, setCartItems } = useContext(CoffeeShopContext);
     const [totalItemsSumInReal, setTotalItemsSumInReal] = useState<string>('');
     const [totalSumInReal, setTotalSumInReal] = useState<string>('');
 
@@ -37,7 +38,8 @@ export function CheckouttPage() {
             complement: '',
             district: '',
             city: '',
-            state: ''
+            state: '',
+            paymentMethod: ''
         }
     });
 
@@ -75,7 +77,9 @@ export function CheckouttPage() {
     }, [totalItemsSumInReal, setTotalSumInReal]);
 
     function handleSubmitOrder(data: CheckoutFormData) {
-        console.log(data);
+        setOrder(data);
+
+        setCartItems([]);
 
         reset();
 

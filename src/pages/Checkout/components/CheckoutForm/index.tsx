@@ -35,21 +35,36 @@ export function CheckoutForm() {
                 <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
                 <S.RadiosContainer>
                     <label htmlFor="credit">
-                        <input type="radio" name='paymentMethod' id='credit' />
+                        <input
+                            type="radio"
+                            id='credit'
+                            value='credit-card'
+                            {...register('paymentMethod')}
+                        />
                         <S.RadioPaymentBox>
                             <CreditCard size={16} />
                             <span>Cartão de crédito</span>
                         </S.RadioPaymentBox>
                     </label>
                     <label htmlFor="debit">
-                        <input type="radio" name='paymentMethod' id='debit' />
+                        <input
+                            type="radio"
+                            id='debit'
+                            value='debit-card'
+                            {...register('paymentMethod')}
+                        />
                         <S.RadioPaymentBox>
                             <Bank size={16} />
                             <span>Cartão de débito</span>
                         </S.RadioPaymentBox>
                     </label>
                     <label htmlFor="cash">
-                        <input type="radio" name='paymentMethod' id='cash' />
+                        <input
+                            type="radio"
+                            id='cash'
+                            value='cash'
+                            {...register('paymentMethod')}
+                        />
                         <S.RadioPaymentBox style={{ padding: '1rem 4rem 1rem 1rem' }}>
                             <Money size={16} />
                             <span>Dinheiro</span>
