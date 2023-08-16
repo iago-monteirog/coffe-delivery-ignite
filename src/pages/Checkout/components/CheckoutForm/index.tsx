@@ -38,7 +38,7 @@ export function CheckoutForm() {
                         <input
                             type="radio"
                             id='credit'
-                            value='credit-card'
+                            value='Cartão de crédito'
                             {...register('paymentMethod')}
                         />
                         <S.RadioPaymentBox>
@@ -50,7 +50,7 @@ export function CheckoutForm() {
                         <input
                             type="radio"
                             id='debit'
-                            value='debit-card'
+                            value='Cartão de débito'
                             {...register('paymentMethod')}
                         />
                         <S.RadioPaymentBox>
@@ -62,7 +62,7 @@ export function CheckoutForm() {
                         <input
                             type="radio"
                             id='cash'
-                            value='cash'
+                            value='Dinheiro'
                             {...register('paymentMethod')}
                         />
                         <S.RadioPaymentBox style={{ padding: '1rem 4rem 1rem 1rem' }}>

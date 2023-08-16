@@ -2,18 +2,11 @@ import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react';
 import { StyledCircle } from '../../styles/themes/styledCircles';
 import * as S from './styles';
 import deliveryImage from '../../assets/delivery-image.svg';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { CoffeeShopContext } from '../../contexts/CoffeeShopContext';
 
 export function Success() {
     const { order } = useContext(CoffeeShopContext);
-    const [translatedPaymentMethod, setTranslatedPaymentMethod] = useState<string>('')
-
-    useEffect(() => {
-        if (order.paymentMethod === 'credit-card') setTranslatedPaymentMethod('Cartão de Crédito');
-        if (order.paymentMethod === 'debit-card') setTranslatedPaymentMethod('Cartão de Débito');
-        if (order.paymentMethod === 'cash') setTranslatedPaymentMethod('Dinheiro');
-    }, []);
 
     return (
         <S.SuccessContainer>
@@ -48,7 +41,7 @@ export function Success() {
                         </StyledCircle>
                         <S.Infos>
                             <p>Pagamento na entrega</p>
-                            <strong>{translatedPaymentMethod}</strong>
+                            <strong>{order.paymentMethod}</strong>
                         </S.Infos>
                     </S.Row>
                 </S.OrderInfo>
