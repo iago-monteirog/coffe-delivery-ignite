@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { Counter } from '../Counter';
 import { CoffeeType } from '../../types/Coffee';
 
-
-
 export function CoffeeCard({ coffee }: CoffeeType) {
 
     const formattedPrice = coffee.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
