@@ -13,7 +13,6 @@ export function CartButton({ isYellow = false, hasCounter = false }: CartButtonP
 
     const { cartItems } = useContext(CoffeeShopContext);
 
-
     return (
         <S.CartButtonContainer
             cartBackgroundColor={isYellow ? "yellowLight" : "purpleDark"}

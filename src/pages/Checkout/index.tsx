@@ -8,6 +8,7 @@ import * as zod from 'zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckoutForm } from './components/CheckoutForm';
+import { cepMask } from '../../utils/masks/mask';
 
 const checkoutFormValidationSchema = zod.object({
     cep: zod.string().min(8, 'Preencha este campo com um CEP correto.'),
@@ -32,7 +33,7 @@ export function CheckouttPage() {
     const checkoutForm = useForm<CheckoutFormData>({
         resolver: zodResolver(checkoutFormValidationSchema),
         defaultValues: {
-            cep: '00000-000',
+            cep: '',
             street: '',
             number: '',
             complement: '',
@@ -40,10 +41,16 @@ export function CheckouttPage() {
             city: '',
             state: '',
             paymentMethod: ''
-        }
+        },
     });
 
-    const { handleSubmit, reset } = checkoutForm;
+    const { handleSubmit, reset, watch, setValue } = checkoutForm;
+
+    const cepValue = watch('cep');
+
+    useEffect(() => {
+        setValue('cep', cepMask(cepValue));
+    }, [cepValue]);
 
     useEffect(() => {
         const processedCartItems: Record<number, { item: CartItensProps; quantity: number }> = {};

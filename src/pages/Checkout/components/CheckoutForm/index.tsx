@@ -16,13 +16,51 @@ export function CheckoutForm() {
                 <p>Informe o endereço onde deseja receber seu pedido</p>
 
                 <div className="fields">
-                    <S.StyledInput type='number' placeholder='CEP' id='cep' {...register('cep')} />
-                    <S.StyledInput type='text' placeholder='Rua' id='street' {...register('street')} />
-                    <S.StyledInput type='number' placeholder='Número' id='number' {...register('number')} />
-                    <S.StyledInput type='text' placeholder='Complemento' id='complement' {...register('complement')} required={false} />
-                    <S.StyledInput type='text' placeholder='Bairro' id='district' {...register('district')} />
-                    <S.StyledInput type='text' placeholder='Cidade' id='city' {...register('city')} />
-                    <S.StyledInput type='text' placeholder='UF' id='state' {...register('state')} />
+                    <S.StyledInput
+                        type='text'
+                        placeholder='CEP'
+                        maxLength={9}
+                        id='cep'
+                        {...register('cep')}
+                    />
+                    <S.StyledInput
+                        type='text'
+                        placeholder='Rua'
+                        id='street'
+                        {...register('street')}
+                    />
+                    <S.StyledInput
+                        type='number'
+                        placeholder='Número'
+                        id='number'
+                        {...register('number')}
+                    />
+                    <S.StyledInput
+                        type='text'
+                        placeholder='Complemento'
+                        id='complement'
+                        {...register('complement')}
+                        required={false}
+                    />
+                    <S.StyledInput
+                        type='text'
+                        placeholder='Bairro'
+                        id='district'
+                        {...register('district')}
+                    />
+                    <S.StyledInput
+                        type='text'
+                        placeholder='Cidade'
+                        id='city'
+                        {...register('city')}
+                    />
+                    <S.StyledInput
+                        type='text'
+                        placeholder='UF'
+                        id='state'
+                        maxLength={2}
+                        {...register('state')}
+                    />
                 </div>
             </S.FormBox>
 
