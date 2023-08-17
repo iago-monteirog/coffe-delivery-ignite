@@ -13,16 +13,13 @@ export function CartButton({ isYellow = false, hasCounter = false }: CartButtonP
 
     const { cartItems } = useContext(CoffeeShopContext);
 
-    function checkCartItems() {
-        alert('ola')
-    }
 
     return (
         <S.CartButtonContainer
             cartBackgroundColor={isYellow ? "yellowLight" : "purpleDark"}
             cartColor={isYellow ? "yellowDark" : "white"}
         >
-            <NavLink to='/checkout' title='Shopping Cart' onClick={checkCartItems}>
+            <NavLink to={cartItems.length ? '/checkout' : '/'} title='Shopping Cart'>
                 {cartItems.length > 0 && hasCounter && (
                     <S.ItemCounter>
                         <span>{cartItems.length}</span>
