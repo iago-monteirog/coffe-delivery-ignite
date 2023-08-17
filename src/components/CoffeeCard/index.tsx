@@ -1,8 +1,7 @@
 import * as S from './styles';
-import { ShoppingCart } from '@phosphor-icons/react';
-import { NavLink } from 'react-router-dom';
 import { Counter } from '../Counter';
 import { CoffeeType } from '../../types/Coffee';
+import { CartButton } from '../CartButton';
 
 export function CoffeeCard({ coffee }: CoffeeType) {
 
@@ -30,9 +29,7 @@ export function CoffeeCard({ coffee }: CoffeeType) {
 
                 <S.ActionsBox>
                     <Counter coffee={coffee} />
-                    <NavLink to='/checkout'>
-                        <ShoppingCart weight='fill' size={22} />
-                    </NavLink>
+                    <CartButton />
                 </S.ActionsBox>
             </S.BuyBox>
         </S.CoffeeBox>

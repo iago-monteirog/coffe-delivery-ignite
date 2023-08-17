@@ -17,7 +17,7 @@ export function Header() {
                     <span>Florianópolis, SC</span>
                 </S.MapBox>
 
-                <CartButton />
+                <CartButton isYellow hasCounter />
             </nav>
         </S.HeaderContainer>
     )

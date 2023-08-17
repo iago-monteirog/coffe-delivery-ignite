@@ -5,17 +5,25 @@ import { useContext } from "react";
 import { CoffeeShopContext } from "../../contexts/CoffeeShopContext";
 
 interface CartButtonProps {
-    isYellow: boolean,
+    isYellow?: boolean,
+    hasCounter?: boolean
 }
 
-export function CartButton({ isYellow }: CartButtonProps) {
+export function CartButton({ isYellow = false, hasCounter = false }: CartButtonProps) {
 
     const { cartItems } = useContext(CoffeeShopContext);
 
+    function checkCartItems() {
+        alert('ola')
+    }
+
     return (
-        <S.CartButtonContainer cartBackgroundColor="yellowLight" cartColor="yellowDark">
-            <NavLink to='/checkout' title='Shopping Cart'>
-                {cartItems.length > 0 && (
+        <S.CartButtonContainer
+            cartBackgroundColor={isYellow ? "yellowLight" : "purpleDark"}
+            cartColor={isYellow ? "yellowDark" : "white"}
+        >
+            <NavLink to='/checkout' title='Shopping Cart' onClick={checkCartItems}>
+                {cartItems.length > 0 && hasCounter && (
                     <S.ItemCounter>
                         <span>{cartItems.length}</span>
                     </S.ItemCounter>
