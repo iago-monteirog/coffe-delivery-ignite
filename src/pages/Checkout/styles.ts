@@ -210,6 +210,7 @@ export const RemoveButton = styled.button`
     justify-content: center;
     align-items: center;
     gap: 4px;
+    cursor: pointer;
 
     background: ${props => props.theme.baseButton};
     border-radius: 6px;

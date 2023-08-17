@@ -3,7 +3,7 @@ import * as S from './styles';
 import { Counter } from '../../components/Counter';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartItensProps, CoffeeShopContext } from '../../contexts/CoffeeShopContext';
+import { CartItensProps, CoffeeShopContext, UniqueCartItemsProps } from '../../contexts/CoffeeShopContext';
 import * as zod from 'zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -83,6 +83,12 @@ export function CheckouttPage() {
 
     }, [totalItemsSumInReal, setTotalSumInReal]);
 
+    useEffect(() => {
+        if (cartItems.length === 0) {
+            navigate('/');
+        }
+    }, [cartItems]);
+
     function handleSubmitOrder(data: CheckoutFormData) {
         setOrder(data);
 
@@ -91,6 +97,14 @@ export function CheckouttPage() {
         reset();
 
         navigate('/success');
+    }
+
+    function handleRemoveItem(item: UniqueCartItemsProps) {
+        const newCartList = cartItems.filter((element) => element.id !== item.item.id);
+        const newUniqueCartList = uniqueCartItems.filter((element) => element.item.id !== item.item.id);
+
+        setUniqueCartItems([...newUniqueCartList]);
+        setCartItems([...newCartList]);
     }
 
     return (
@@ -119,7 +133,7 @@ export function CheckouttPage() {
                                             <S.Action>
                                                 <Counter key={coffee.item.id} coffee={coffee.item} />
 
-                                                <S.RemoveButton>
+                                                <S.RemoveButton onClick={() => handleRemoveItem(coffee)}>
                                                     <Trash size={16} />
                                                     <span>Remover</span>
                                                 </S.RemoveButton>

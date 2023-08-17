@@ -9,7 +9,7 @@ export interface CartItensProps {
     price: number;
     tags: string[];
 }
-interface UniqueCartItemsProps {
+export interface UniqueCartItemsProps {
     item: CartItensProps;
     quantity: number;
 }
